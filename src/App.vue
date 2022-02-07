@@ -14,15 +14,15 @@ import VideoList from "./components/VideoList";
 
 const _YOUTUBE_API = YOUTUBE_API;
 export default {
-    name: "App",
-  data () {
+  name: "App",
+  data() {
     return {
-        videosList: {},
-    }
+      videosList: [],
+    };
   },
   components: {
     SearchBar,
-    VideoList
+    VideoList,
   },
   methods: {
     onSearchTextChange(data) {
@@ -37,7 +37,10 @@ export default {
         })
         .then((res) => {
           console.log(res);
-          this.videosList = res
+          this.videosList = res.data.items;
+        }).catch((err) => {
+           console.log(err);
+           this.videosList = [];
         });
     },
   },
