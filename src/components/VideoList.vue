@@ -1,15 +1,15 @@
 <template>
-  <h1>Videos</h1>
-  <span>{{ videosList.length }} videos</span>
-  <ul class="list-group">
-    <VideoListItem
-      v-for="item in videosList"
-      :key="item.etag"
-      :videoElement="item"
-      @onVideoSelect="onVideoSelect"
-    >
-    </VideoListItem>
-  </ul>
+  <div class="col-md-4">
+    <ul class="list-group">
+      <VideoListItem
+        v-for="item in videosList"
+        :key="item.etag"
+        :videoElement="item"
+        @onVideoSelect="onVideoSelect"
+      >
+      </VideoListItem>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -24,23 +24,32 @@ export default {
         return [
           {
             id: "1",
+            videoId: "HcfHQlUeYo4",
             etag: "www1",
             snippet: {
               title: "my video 1",
+              description:
+                "hey there! this is a random video #1 from somewhere.",
             },
           },
           {
             id: "2",
+            videoId: "esX7SFtEjHg",
             etag: "www2",
             snippet: {
               title: "my video 2",
+              description:
+                "hey there! this is a random video #2 from somewhere.",
             },
           },
           {
             id: "3",
+            videoId: "5qap5aO4i9A",
             etag: "www3",
             snippet: {
               title: "my video 3",
+              description:
+                "hey there! this is a random video #3 from somewhere.",
             },
           },
         ];

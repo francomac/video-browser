@@ -1,8 +1,11 @@
 <template>
   <div class="container">
     <search-bar @search-text="onSearchTextChange" />
-    <video-list @onVideoSelect="onVideoSelect" />
-    <!-- <video-list :videos-list="videosList" @onVideoSelect="onVideoSelect" /> -->
+    <div class="row">
+      <video-list-item-detail :videoElement="videoSelected" />
+      <video-list @onVideoSelect="onVideoSelect" />
+      <!-- <video-list :videos-list="videosList" @onVideoSelect="onVideoSelect" /> -->
+    </div>
   </div>
 </template>
 
@@ -12,18 +15,22 @@ import { YOUTUBE_API } from "./constants";
 
 import SearchBar from "./components/SearchBar";
 import VideoList from "./components/VideoList";
+import VideoListItemDetail from "./components/VideoListItemDetail";
 
 const _YOUTUBE_API = YOUTUBE_API;
+
 export default {
   name: "App",
   data() {
     return {
       videosList: [],
+      videoSelected: null,
     };
   },
   components: {
     SearchBar,
     VideoList,
+    VideoListItemDetail,
   },
   methods: {
     onSearchTextChange(data) {
@@ -46,7 +53,7 @@ export default {
         });
     },
     onVideoSelect($event) {
-      console.log($event);
+      this.videoSelected = $event;
     },
   },
 };
