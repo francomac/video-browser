@@ -6,12 +6,20 @@
 
 <script>
 export default {
-    methods: {
-        onInput: function($event) {
-            this.$emit('searchText', $event.target.value.trim())
-        },
-    }
+  methods: {
+    onInput: function ($event) {
+      this.$emit("searchText", $event.target.value.trim());
+    },
+  },
 };
 </script>
 
-<style></style>
+<style scoped>
+input {
+  width: 75%;
+}
+div {
+  text-align: center;
+  margin: 15px auto;
+}
+</style>

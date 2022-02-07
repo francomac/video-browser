@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <div class="container">
     <search-bar @search-text="onSearchTextChange" />
-    <video-list :videos-list="videosList" />
+    <video-list @onVideoSelect="onVideoSelect" />
+    <!-- <video-list :videos-list="videosList" @onVideoSelect="onVideoSelect" /> -->
   </div>
 </template>
 
@@ -38,10 +39,14 @@ export default {
         .then((res) => {
           console.log(res);
           this.videosList = res.data.items;
-        }).catch((err) => {
-           console.log(err);
-           this.videosList = [];
+        })
+        .catch((err) => {
+          console.log(err);
+          this.videosList = [];
         });
+    },
+    onVideoSelect($event) {
+      console.log($event);
     },
   },
 };
